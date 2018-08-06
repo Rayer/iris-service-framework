@@ -1,0 +1,44 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Iris
+This is IRIS services for node.rayer.idv.tw
+
+## Iris Services [/services]
+
+### List All Services [GET]
+
++ Response 200 (application/json)
+
+        [
+            {"name": "Gateway Service", "id": "ed0f6552-bd83-4195-823e-d0c227ff9e97", "order": 0, "status": "good", description:"Iris Gateway Service"},
+            {"name": "Tunnel Service", "id": "7e5e17d8-815d-4e8f-a49e-1d299ebabf7e", "order": 1, "status": "good", description:"VPN Tunnel"},
+            {"name": "PTOManagement", "id": "bbb753df-42ee-4e1f-9892-0a140e241085", "order": 2, "status": "good", description:"PTO Management on Slack"}
+        ]
+
+### Create a new service [POST]
+
+You may configure and upload service in Iris, whether in git or upload way, or even an external delegated(for example, heroku) service.
+
++ Request (application/json)
+
+        {
+            "deploy": "git",
+            "name": "Accent",
+            "location": "service@node.rayer.idv.tw:service/accent.git",
+            "callback": "node.rayer.idv.tw/callback",
+            "ondemend": false
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /services/2
+
+    + Body
+
+            {
+                "queryUrl": "node.rayer.idv.tw/services/{uuid},
+                "status": "pending"
+            }

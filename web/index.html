@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Server Demo</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    <div id="app2">
+        <span v-bind:title="message">
+            Hover your mouse over me for a few seconds to see my dynamically bound title!
+        </span>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                message: "Hello!"
+            }
+        });
+
+        var app2 = new Vue({
+            el:"#app2",
+            data: {
+                message: 'You loaded this page on ' + new Date().toLocaleString()
+            }
+        })
+    </script>
+    <h1>Iris Service Dashboard</h1>
+    <input type="button" id="add_server" value="Add Server" />
+    <input type="button" id="refresh_status" value="Refresh" />
+
+    <table>
+        <th></th>
+        <tr>
+            <td>Oh my god</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
